@@ -4,6 +4,7 @@ import { Rating } from "@mui/material";
 import { useCallback, useState } from "react";
 import SetColor from "./SetColor";
 import SetQuantity from "./SetQuantity";
+import Button from "../Button";
 
 interface ProductDetailsProps{
     product: any;
@@ -85,7 +86,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
     return (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
             <div>Images</div>
-            <div className="flex flex-col gap-1 text-slate-500 text-sm">
+            <div className="flex flex-col gap-1 text-slate-500 text-sm ">
                 <h2 className="text-3xl font-medium text-slate-700">{product.name}</h2>
                 <div className="flex items-center gap-2">
                     <Rating value={productRating} readOnly />
@@ -109,9 +110,13 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
                     {product.inStock ? 'In Stock' : 'Out of Stock'} 
                 </div>
                 <Horizontal />
-               <SetColor cartProduct={cartProduct} images={product.images} handleColorSelect={handleColorSelect} />
-               <SetQuantity cartProduct={cartProduct} handleQtyDecrease={handleQtyDecrease} handleQtyIncrease={handleQtyIncrease}  />
-                <div>Add to cart</div>
+                <SetColor cartProduct={cartProduct} images={product.images} handleColorSelect={handleColorSelect} />
+                <Horizontal />
+                <SetQuantity cartProduct={cartProduct} handleQtyDecrease={handleQtyDecrease} handleQtyIncrease={handleQtyIncrease} />
+                <Horizontal />
+                <div className="max-w-[300px]">
+                <Button label="Add to cart" onClick = {()=>{}}  />
+             </div>
             </div>
         </div>
     );
