@@ -9,6 +9,7 @@ import ProductImage from "./ProductImage";
 import { useCart } from "@/app/hooks/useCart";
 import { MdCheckCircle } from "react-icons/md";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 interface ProductDetailsProps {
   product: any;
@@ -35,10 +36,26 @@ const Horizontal = () => {
   return <hr className="w-[30%] my-2" />;
 };
 
+const CartMessage = () => {
+    const router = useRouter();
+  
+    return (
+      <>
+        <p className="flex items-center gap-1 mb-2 text-slate-500">
+          <MdCheckCircle className="text-teal-400" size={20} />
+          <span>Product Added to cart!</span>
+        </p>
+        <div className="max-w-[300px]">
+          <Button label="View Cart" outline onClick={() => router.push('/cart')} />
+        </div>
+      </>
+    );
+  };
+
 const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
     const { handleAddProductToCart, cartProducts, cartTotalQty } = useCart();
     
-    const router = useRouter();
+ 
 
   const [isProductInCart, setIsProductInCart] = useState(false);
 
@@ -73,10 +90,12 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
       return;
     }
     setCartProduct((prev) => {
-      console.log("Previous quantity:", prev.quantity);
-      return { ...prev, quantity: prev.quantity + 1 };
+        console.log("Previous quantity:", prev.quantity);
+        toast.success("qty inc")
+        return { ...prev, quantity: prev.quantity + 1 };
+
     });
-  }, [cartProduct]);
+  }, [cartProduct.quantity]);
 
   const handleQtyDecrease = useCallback(() => {
     console.log("Decreasing quantity");
@@ -85,15 +104,17 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
     }
 
     setCartProduct((prev) => {
-      console.log("Previous quantity:", prev.quantity);
-      return { ...prev, quantity: prev.quantity - 1 };
+        console.log("Previous quantity:", prev.quantity);
+        toast.success("qty dec")
+        return { ...prev, quantity: prev.quantity - 1 };
+   
     });
-  }, [cartProduct]);
+  }, [cartProduct.quantity]);
 
-  console.log(cartProducts);
+  console.log(cartTotalQty);
 
   useEffect(() => {
-    setIsProductInCart(false);
+    // setIsProductInCart(false);
     if (cartProducts) {
       const existingIndex = cartProducts.findIndex(
         (item) => item.id === product.id
@@ -130,15 +151,7 @@ const ProductDetails: React.FC<ProductDetailsProps> = ({ product }) => {
           {product.inStock ? "In Stock" : "Out of Stock"}
         </div>
         <Horizontal />
-              {isProductInCart ? <>
-                  <p className="flex items-center gap-1 mb-2 text-slate-500">
-                      <MdCheckCircle className="text-teal-400" size={20} />
-                      <span>Product Added to cart!</span>
-                  </p>
-                  <div className="max-w-[300px]">
-                      <Button label="View Cart" outline onClick={()=>router.push('/cart')}  />
-                  </div>
-              </> : <>
+              {isProductInCart ? <CartMessage /> : <>
               <SetColor
           cartProduct={cartProduct}
           images={product.images}
