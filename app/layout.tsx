@@ -24,7 +24,7 @@ export default function RootLayout({
         <Toaster toastOptions={{
           style: {
             background: 'rgb(51 65 85)',
-            color:'fff'
+            color:'#fff'
           }
         }} />
         <CartProvider>

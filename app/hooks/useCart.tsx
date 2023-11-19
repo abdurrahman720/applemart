@@ -5,7 +5,12 @@ import toast from "react-hot-toast";
 type CartContextType = {
     cartTotalQty: number,
     cartProducts: CartProductType[] | null,
-    handleAddProductToCart : (product: CartProductType) =>void,
+    handleAddProductToCart: (product: CartProductType) => void,
+    handleRemoveProductFromCart: (product: CartProductType) => void
+    handleClearCart: () => void,
+    handleCartQtyIncrease:(product: CartProductType) => void,
+    handleCartQtyDecrease:(product: CartProductType) => void,
+    
 }
 
 
@@ -20,6 +25,13 @@ export const CartContextProvider = (props:Props) => {
 
     const [cartTotalQty, setCartTotalQty] = useState(0);
     const [cartProducts, setCartProducts] = useState<CartProductType[] | null>(null);
+
+    const handleClearCart = useCallback(() => {
+        setCartTotalQty(0);
+        setCartProducts(null);
+        localStorage.removeItem("appleMartCart");
+        toast.success("Cart Cleared!")
+    },[])
     
     const handleAddProductToCart = useCallback((product: CartProductType) => {
         setCartProducts((prev) => {
@@ -39,6 +51,67 @@ export const CartContextProvider = (props:Props) => {
         })
     }, []);
 
+    const handleRemoveProductFromCart = useCallback((product: CartProductType) => {
+        if (cartProducts) {
+            const filteredProducts = cartProducts.filter(p => p.id !== product.id);
+
+            setCartProducts(filteredProducts);
+            toast.success("Product removed from Cart!")
+            localStorage.setItem("appleMartCart", JSON.stringify(filteredProducts));
+        }
+        
+    }, [cartProducts])
+    
+    const handleCartQtyIncrease = useCallback((product: CartProductType) => {
+        let updatedCart;
+        if (product.quantity === 99) {
+            return toast.error("Maximum reached")
+        }
+        
+        if (cartProducts) {
+            updatedCart = [...cartProducts];
+            
+            const existingIndex = cartProducts.findIndex(
+                (item) => item.id === product.id
+            );
+            if (existingIndex >= 0) {
+                updatedCart[existingIndex].quantity = updatedCart[existingIndex].quantity + 1;
+
+            }
+
+            setCartProducts(updatedCart);
+            localStorage.setItem("appleMartCart", JSON.stringify(updatedCart));
+
+        }
+
+
+    }, [cartProducts]);
+
+    const handleCartQtyDecrease = useCallback((product: CartProductType) => {
+        let updatedCart;
+        if (product.quantity === 1) {
+                return toast.error("Minimum reached")
+        }
+        
+        if (cartProducts) {
+            updatedCart = [...cartProducts];
+            
+            const existingIndex = cartProducts.findIndex(
+                (item) => item.id === product.id
+              );
+            if (existingIndex >= 0) {
+                updatedCart[existingIndex].quantity = updatedCart[existingIndex].quantity - 1;
+
+            }
+
+            setCartProducts(updatedCart);
+            localStorage.setItem("appleMartCart", JSON.stringify(updatedCart));
+
+        }
+
+
+    },[cartProducts])
+
     useEffect(() => {
         const cartItems: any = localStorage.getItem("appleMartCart");
         const cProducts: CartProductType[] | null = JSON.parse(cartItems);
@@ -46,7 +119,7 @@ export const CartContextProvider = (props:Props) => {
         setCartProducts(cProducts)
     },[])
 
-    const value= {cartTotalQty, cartProducts, handleAddProductToCart}
+    const value= {cartTotalQty, cartProducts, handleAddProductToCart, handleRemoveProductFromCart, handleClearCart,handleCartQtyIncrease,handleCartQtyDecrease }
 
     return <CartContext.Provider value={value} {...props} />
 
