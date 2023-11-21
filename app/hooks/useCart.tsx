@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 
 type CartContextType = {
     cartTotalQty: number,
+    cartTotalAmount:number,
     cartProducts: CartProductType[] | null,
     handleAddProductToCart: (product: CartProductType) => void,
     handleRemoveProductFromCart: (product: CartProductType) => void
@@ -24,6 +25,7 @@ interface Props{
 export const CartContextProvider = (props:Props) => {
 
     const [cartTotalQty, setCartTotalQty] = useState(0);
+    const [cartTotalAmount, setCartTotalAmount] = useState(0);
     const [cartProducts, setCartProducts] = useState<CartProductType[] | null>(null);
 
     const handleClearCart = useCallback(() => {
@@ -49,7 +51,7 @@ export const CartContextProvider = (props:Props) => {
         
             return updatedCart;
         })
-    }, []);
+    }, [cartProducts]);
 
     const handleRemoveProductFromCart = useCallback((product: CartProductType) => {
         if (cartProducts) {
@@ -76,7 +78,6 @@ export const CartContextProvider = (props:Props) => {
             );
             if (existingIndex >= 0) {
                 updatedCart[existingIndex].quantity = updatedCart[existingIndex].quantity + 1;
-
             }
 
             setCartProducts(updatedCart);
@@ -101,10 +102,12 @@ export const CartContextProvider = (props:Props) => {
               );
             if (existingIndex >= 0) {
                 updatedCart[existingIndex].quantity = updatedCart[existingIndex].quantity - 1;
+            
 
             }
 
             setCartProducts(updatedCart);
+          
             localStorage.setItem("appleMartCart", JSON.stringify(updatedCart));
 
         }
@@ -117,9 +120,32 @@ export const CartContextProvider = (props:Props) => {
         const cProducts: CartProductType[] | null = JSON.parse(cartItems);
 
         setCartProducts(cProducts)
-    },[])
+    }, [])
+    
+    useEffect(() => {
+        const getTotal = () => {
+            if (cartProducts) {
+                const { total, qty } = cartProducts?.reduce((acc, item) => { 
+                const itemTotal = item.price * item.quantity;
+                acc.total = acc.total + itemTotal;
+                acc.qty = acc.qty + item.quantity;
+                return acc;
+            }, {  // deafult value of acc data
+                total: 0,
+                qty: 0
+                })
+                setCartTotalQty(qty);
+                setCartTotalAmount(total);
+            }
+            
+        }
+        getTotal();
 
-    const value= {cartTotalQty, cartProducts, handleAddProductToCart, handleRemoveProductFromCart, handleClearCart,handleCartQtyIncrease,handleCartQtyDecrease }
+    }, [cartProducts])
+    
+ 
+
+    const value= {cartTotalQty,cartTotalAmount, cartProducts, handleAddProductToCart, handleRemoveProductFromCart, handleClearCart,handleCartQtyIncrease,handleCartQtyDecrease }
 
     return <CartContext.Provider value={value} {...props} />
 
