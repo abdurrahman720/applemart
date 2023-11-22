@@ -46,7 +46,7 @@ const CartClient = () => {
   return (
     <div className="">
       <Heading title="Shoppig Cart" center />
-      <div className="grid grid-cols-5 text-xs gap-4 pb-2 items-center ">
+      <div className="grid  grid-cols-5 text-xs gap-4 pb-2 items-center ">
         <div className="col-span-2 justify-self-start">Product</div>
         <div className="justify-self-center">Price</div>
         <div className="justify-self-center">Quantity</div>
