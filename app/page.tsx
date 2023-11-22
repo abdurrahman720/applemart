@@ -1,4 +1,7 @@
 "use client"
+
+export const revalidate = 0;
+
 import { useState } from "react";
 import Container from "./components/Container";
 import HomeBanner from "./components/HomeBanner";
