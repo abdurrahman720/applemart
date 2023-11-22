@@ -6,7 +6,7 @@ import CredentialsProvider  from "next-auth/providers/credentials";
 import prisma from "@/app/libs/prismadb"
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 
-export default NextAuth( {
+export const authOptions:AuthOptions = {
     adapter: PrismaAdapter(prisma),
     providers: [
         CredentialsProvider({
@@ -48,6 +48,8 @@ export default NextAuth( {
         strategy: 'jwt'
     },
     secret: process.env.NEXTAUTH_SECRET
-})
+}
+
+export default NextAuth(authOptions)
 
 
