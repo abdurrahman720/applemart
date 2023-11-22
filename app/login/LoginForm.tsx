@@ -8,7 +8,7 @@ import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import Button from "../components/Button";
 import Link from "next/link";
 
-const RegisterForm = () => {
+const LoginForm = () => {
 
     const [isLoading, setIsLoading] = useState(false);
 
@@ -21,21 +21,20 @@ const RegisterForm = () => {
 
     return ( 
         <>
-            <Heading title="Sign Up for Applemart" />
+            <Heading title="Login for Applemart" />
             <hr className="bg-slate-300 w-full h-px" />
-            <Input id="name" label="Name" disabled={isLoading} register={register} errors={errors} required />
             <Input id="email" label="Email" disabled={isLoading} register={register} errors={errors} required />
             <Input id="password" label="Password" disabled={isLoading} register={register} errors={errors} required type="password" />
-            <Button label={isLoading ? "Loading" : 'Sign Up'} onClick={handleSubmit(onSubmit)} />
+            <Button label={isLoading ? "Loading" : 'Login'} onClick={handleSubmit(onSubmit)} />
 
             <p className="text-sm">
-                Already Have an account? 
-                <Link href="/login" className="underline ml-1">
-                 Login
+               New to appleMart?
+                <Link href="/register" className="underline ml-1">
+                Sign Up
                 </Link>
             </p>
         </>
      );
 }
  
-export default RegisterForm;
+export default LoginForm;
