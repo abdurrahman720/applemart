@@ -12,13 +12,13 @@ export const products = [
           color: "White",
           colorCode: "#FFFFFF",
           image:
-            "https://firebasestorage.googleapis.com/v0/b/ecommerce-shop-cc542.appspot.com/o/products%2F1688622161445-iphone14-white.png?alt=media&token=fe2065e5-fdfe-4a6f-baa6-380b5fad90b8",
+            "https://gadgetandphone.com/public/uploads/all/r86Fpgfm30pfRZDHc7EAngWgfrf2xh1msoPRQzDW.jpg",
         },
         {
           color: "Gray",
           colorCode: "#808080",
           image:
-            "https://firebasestorage.googleapis.com/v0/b/ecommerce-shop-cc542.appspot.com/o/products%2F1688622165836-iphone14-gray.png?alt=media&token=58f684db-998e-43eb-aa06-efe3d6ccfad4",
+            "https://gadgetandphone.com/public/uploads/all/kpTUTIXlrA4QOj0yBKXZD63ZyVpJPJK1eTHZGEKq.jpg",
         },
       ],
       reviews: [],
@@ -37,7 +37,7 @@ export const products = [
           color: "Black",
           colorCode: "#000000",
           image:
-            "https://firebasestorage.googleapis.com/v0/b/ecommerce-shop-cc542.appspot.com/o/products%2F1688529886610-black-logitech-keyboard.jpg?alt=media&token=353aa276-1316-4e50-bc26-8e3828fe6cdd",
+            "https://resource.logitech.com/w_692,c_lpad,ar_4:3,q_auto,f_auto,dpr_2.0/d_transparent.gif/content/dam/logitech/en/products/keyboards/mx-keys-mac/gallery/us-mx-keys-for-mac-gallery-3-4-front-1.png?v=1",
         },
       ],
       reviews: [
@@ -77,19 +77,19 @@ export const products = [
           color: "Black",
           colorCode: "#000000",
           image:
-            "https://firebasestorage.googleapis.com/v0/b/ecommerce-shop-cc542.appspot.com/o/products%2F1686386605041-iphone12-black.jpg?alt=media&token=32abf316-ddf6-4870-9e1e-a7c884b750d6",
+            "https://gadgetandphone.com/public/uploads/all/yAO8qIKR1Ot1igTTE8Ze4MHbD5uiAJhimn6pVMLV.jpg",
         },
         {
           color: "Blue",
           colorCode: " #0000FF",
           image:
-            "https://firebasestorage.googleapis.com/v0/b/ecommerce-shop-cc542.appspot.com/o/products%2F1686386607274-iphone12-blue.jpg?alt=media&token=e83a9b13-86b6-4518-9f1e-8ddef12ba9a2",
+            "https://gadgetandphone.com/public/uploads/all/dHo7eTbhLaw1VhDEku95GDJ1uGpHYYMFo2cx49mI.jpg",
         },
         {
           color: "Red",
           colorCode: "#FF0000",
           image:
-            "https://firebasestorage.googleapis.com/v0/b/ecommerce-shop-cc542.appspot.com/o/products%2F1686386608652-iphone12-red.jpg?alt=media&token=603a9e86-5b8c-4f8d-b61c-c1c77e60e954",
+            "https://gadgetandphone.com/public/uploads/all/CU3U4xfhw7gOBQqFUf8eE47VCgzyJKyRfBn7iXTQ.jpg",
         },
       ],
       reviews: [
@@ -103,7 +103,7 @@ export const products = [
           createdDate: "2023-06-26T15:53:44.483Z",
           user: {
             id: "6499b184b0e9a8c8709821d3",
-            name: "Chaoo",
+            name: "aminur",
             email: "example1@gmail.com",
             emailVerified: null,
             image:
@@ -123,7 +123,7 @@ export const products = [
           createdDate: "2023-06-26T14:30:40.998Z",
           user: {
             id: "6475af156bad4917456e6e1e",
-            name: "Charles",
+            name: "Abdur Rahman",
             email: "example@gmail.com",
             emailVerified: null,
             image:
@@ -150,7 +150,7 @@ export const products = [
           color: "Graphite",
           colorCode: " #383838",
           image:
-            "https://firebasestorage.googleapis.com/v0/b/ecommerce-shop-cc542.appspot.com/o/products%2F1688529379028-logitech-graphite-mouse.jpg?alt=media&token=f9dfba29-832f-4c58-88c6-a7a0ae6b22bf",
+            "https://resource.logitech.com/w_692,c_lpad,ar_4:3,q_auto,f_auto,dpr_2.0/d_transparent.gif/content/dam/logitech/en/products/mice/mx-master-3s-mac-bluetooth-mouse/gallery/pale-grey/mx-master-3s-for-mac-mouse-top-view-pale-grey.png?v=1",
         },
       ],
       reviews: [],
@@ -169,13 +169,13 @@ export const products = [
           color: "Black",
           colorCode: "#000000",
           image:
-            "https://firebasestorage.googleapis.com/v0/b/ecommerce-shop-cc542.appspot.com/o/products%2F1688041293609-watch-black.jpg?alt=media&token=270f918c-d9f5-41a2-ad32-45d5f3c66bf0",
+            "https://istockbd.com/cdn/shop/files/Apple-Watch-Ultra-2-Alpine-Loop-Blue-price-in-BD.jpg?v=1694685864&width=1000",
         },
         {
           color: "Silver",
-          colorCode: "#C0C0C0",
+          colorCode: "#FFF",
           image:
-            "https://firebasestorage.googleapis.com/v0/b/ecommerce-shop-cc542.appspot.com/o/products%2F1688041295389-watch-silver.jpg?alt=media&token=7341e7f0-5c29-4f91-a7e3-57e50faafb74",
+            "https://istockbd.com/cdn/shop/files/Apple-Watch-Ultra-2-Ocean-Band-White-price-in-BD.jpg?v=1694685864&width=1000",
         },
       ],
       reviews: [],

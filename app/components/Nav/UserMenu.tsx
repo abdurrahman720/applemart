@@ -11,7 +11,7 @@ import { SaveUser } from "@/types";
 import { useRouter } from "next/navigation";
 
 interface UserMenuProps {
-  currentUser: SaveUser;
+    currentUser: SaveUser | null;
 }
 
 const UserMenu: React.FC<UserMenuProps> = ({ currentUser }) => {

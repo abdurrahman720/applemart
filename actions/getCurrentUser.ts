@@ -1,6 +1,7 @@
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import { getServerSession } from "next-auth";
 import prisma from "../app/libs/prismadb";
+import { SaveUser } from "@/types";
 
 export async function getSession() {
     return await getServerSession(authOptions);
@@ -27,10 +28,11 @@ export async function getCurrentUser() {
         return {
             ...currentUser, createdAt: currentUser.createdAt.toISOString(), updatedAt: currentUser.updatedAt.toISOString(),
             emailVerified: currentUser.emailVerified?.toString() || null
-        }
+        } as SaveUser;
 
     }
     catch (err: any) {
-        
+        console.error("Error fetching user:", err);
+        return null;
     }
 }

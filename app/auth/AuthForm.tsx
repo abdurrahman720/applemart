@@ -37,7 +37,9 @@ const AuthForm = () => {
       console.log(data)
       
       if (variant === "REGISTER") {
-        axios.post('/api/register', data).then(() => signIn('credentials', data)).then((callback) => {
+        axios.post('/api/register', data).then(() => signIn('credentials', {
+          ...data, redirect: false
+        })).then((callback) => {
           if (callback?.ok) {
             router.push("/cart");
             router.refresh();

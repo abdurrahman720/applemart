@@ -1,7 +1,7 @@
 import { User } from "@prisma/client";
 
 export type SaveUser = Omit<User, "createdAt" | "updatedAt" | "emailVerified"> & {
-    creaatedAt: string;
+    createdAt: string;
     updatedAt: string;
-    emailVerified: string;
+    emailVerified: string | null;
 }
