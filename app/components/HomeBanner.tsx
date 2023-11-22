@@ -1,4 +1,5 @@
 import Image from "next/image";
+import bannerImg from '../../public/banner-image.png'
 
 const HomeBanner = () => {
     return (
@@ -10,7 +11,7 @@ const HomeBanner = () => {
                     <h1 className="text-2xl md:text-5xl text-yellow-400 font-bold">Get 50% Off</h1>
                 </div>
                 <div className="relative w-1/3 aspect-video ">
-             <Image src="/banner-image.png " alt="banner image" fill className="object-contain" />
+             <Image src={bannerImg} alt="banner image" fill className="object-contain" />
                   </div>
             </div>
         </div>
