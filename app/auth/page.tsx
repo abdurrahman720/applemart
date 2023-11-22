@@ -1,15 +1,15 @@
 import Container from "../components/Container";
 import FormWrap from "../components/FormWrap";
-import LoginForm from "./LoginForm";
+import AuthForm from "./AuthForm";
 
-const Login = () => {
+const Register = () => {
     return ( 
         <Container>
             <FormWrap>
-                <LoginForm />
-</FormWrap>
+                <AuthForm />
+            </FormWrap>
         </Container>
      );
 }
  
-export default Login;
+export default Register;
